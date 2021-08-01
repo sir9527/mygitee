@@ -1,7 +1,8 @@
 
 
 
-## JVM从入门到精通
+
+来源Bilibili尚硅谷宋红康老师JVM教程：: [传送门](https://www.bilibili.com/video/BV1PJ411n7xZ?from=search&seid=17749046961050319330)
 
 
 ### JVM上篇:内存与垃圾回收篇
