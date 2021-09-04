@@ -25,7 +25,18 @@ public class JsonBean {
     /**
      * JSON字符串
      */
-    private static final String jsonStr = "{\"retCode\": 200, \"retMsg\": \"success\", \"retData\": {\"result\": [{\"tag\": \"demo\", \"xmin\": 80, \"ymin\": 1600, \"xmax\": 1650, \"ymax\": 1754}], \"my_url\": \"http://www.baidu.com\"}}";
+    private static final String jsonStr = 
+                        "{\"retCode\": 200, " +
+                        "\"retMsg\": \"success\", " +
+                         "\"retData\": " +
+                                "{\"result\": " +
+                                 "[" +
+                                        "{\"tag\": \"demo\", " +
+                                        "\"xmin\": 80, " +
+                                        "\"ymin\": 1600, " +
+                                        "\"xmax\": 1650," +
+                                        " \"ymax\": 1754}], " +
+                                  "\"my_url\": \"http://www.baidu.com\"}}";
 
 
     /**
