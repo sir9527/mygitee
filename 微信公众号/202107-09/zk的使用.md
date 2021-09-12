@@ -255,10 +255,6 @@ public class TestService {
     }
 
 
-    @Data
-    public static class Student{
-        private String name;
-    }
 
     @Data
     public static class Manager{
