@@ -82,7 +82,7 @@ public class RedisConfig {
         RedisTemplate<String, Object> template = new RedisTemplate<String, Object>();
         template.setConnectionFactory(factory);
 
-        // Json序列化配置  （此处可以不设置，直接使用jdk自带的序列化方法）
+        // Json序列化配置  
         Jackson2JsonRedisSerializer jackson2JsonRedisSerializer = new Jackson2JsonRedisSerializer(Object.class);
         ObjectMapper om = new ObjectMapper();
         om.setVisibility(PropertyAccessor.ALL, JsonAutoDetect.Visibility.ANY);
