@@ -26,7 +26,7 @@
 
 ### 1.1 项目图
 
-![http项目结构](.\image\http项目结构.png)
+![http项目结构](./image/http项目结构.png)
 
 
 
@@ -165,12 +165,12 @@ public class StudentService {
 
 **提供方**
 
-![web访问1](.\image\web访问1.png)
+![web访问1](./image/web访问1.png)
 
 
 **消费方**
 
-![web访问2](.\image\web访问2.png)
+![web访问2](./image/web访问2.png)
 
 
 
@@ -214,7 +214,7 @@ public class StudentService {
 
 **RPC基本架构图**
 
-![rpc](.\image\rpc.png)
+![rpc](./image/rpc.png)
 
 
 
@@ -240,7 +240,7 @@ public class StudentService {
 
 **ZK注册中心的RPC架构图**
 
-![zk注册中心](.\image\zk注册中心.png)
+![zk注册中心](./image/zk注册中心.png)
 
 
 
@@ -250,7 +250,7 @@ public class StudentService {
 
 **Dubbo服务发现架构图**
 
-![dubbo](.\image\dubbo.png)
+![dubbo](./image/dubbo.png)
 
 
 
