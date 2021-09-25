@@ -85,8 +85,7 @@ public class JsonBean {
         System.out.println(stringJsonresult);
     }
 
-    2222
-    
+
     /**
      * 2.fastjson：
      *      2.1 json字符串 与 java对象互相转化 ； 
@@ -112,7 +111,7 @@ public class JsonBean {
     }
 }
 
-111111111111111111
+
 
 ```
 
