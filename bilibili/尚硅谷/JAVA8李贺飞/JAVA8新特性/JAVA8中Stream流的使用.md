@@ -259,7 +259,7 @@ public class Employee {
 ```java
     @Test
     void test07() {
-        // 分组
+        // 分组（20210928 在项目中用到了）
         Map<Status, List<Employee>> map = emps.stream()
                 .collect(Collectors.groupingBy(Employee::getStatus));
     }
