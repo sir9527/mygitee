@@ -49,6 +49,229 @@ npm install jquery   -- 下载jquery的js文件
 - 显示指令：v-show 
 
 
+```html
+  vue使用3部曲
+    1.导入vue.js
+    2.创建一个vue对象  表示从app节点开始渲染节点内的节点
+    3.定义vue视图
+```
+
+
+```vue
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue史诗级入门教程</title>
+</head>
+
+<body>
+
+    <!--3.定义vue视图-->
+    <div id="app">
+        <!--3.1 插值表达式-->
+        我的名字：{{title}}
+        <hr>
+        <p>我的性别：{{male==0?"男":"女"}}</p>
+        <hr>
+        <p>我的年龄：{{myfilter(age,10)}}</p>
+
+
+        <!--3.2 绑定指令（管理事件）-->
+        <!--绑定：单击事件  @click 是 v-on:click的缩写-->
+        <!--按键修饰符：回车后直接触发提交方法  @keyup.enter-->
+        <p>用户：<input type="text" v-model="user.userName"></p>
+        <p>密码：<input type="text" v-model="user.password"></p>
+        <!--
+            <p>密码：<input type="text" v-model="user.password" @keyup.enter="login"></p>
+        -->
+        <p><button @click="login">登录</button></p>
+
+        <!--绑定：键盘事件 @keydown 按下键盘 ； @keyup 抬起键盘 -->
+        <textarea id="content" name="" cols="30" rows="10" maxlength="140" @keydown="keyDownContent" @keyup="keyDownContent"></textarea>
+        <span>你可以输入{{size}}字</span>
+
+        <!--绑定：鼠标时间 @mouseenter 鼠标移入 ； @mouseleave 鼠标移出-->
+        <div id="divBox" @mouseenter="enter" @mouseleave="outer">我是div鼠标事件</div>
+
+        <!--事件修饰符：抑制默认行为的发生  例如： @click.prevent中的prevent-->
+        <!--默认行为：a button input submit ...-->
+        <a href="https://www.baidu.com" @click.prevent="gotoBaidu">点击我触发跳转事件</a>
+        <!--
+            <a href="#" @click.prevent="gotoBaidu">点击我触发跳转事件</a>
+            <a href="javascript:void(0);" @click ="gotoBaidu">点击我触发跳转事件</a>
+        -->
+
+
+        <!--3.3 属性指令（管理属性）  将属性与data绑定  :class 是v-bind:class 的缩写 -->
+        <span :content="content"></span>
+
+
+        <!--3.4 v-text 和 v-html（文本指令） ：和插值表达式都具有计算、三目、调用内置方法-->
+        <p v-html="content"></p>
+        <p v-text="male==0?'男':'女'"></p>
+
+
+        <!--3.5 v-model（管理form元素） 双向绑定-->
+
+
+        <!--3.6 v-for-->
+        <p v-for="(user,index) in users">
+            {{index + 1}} , {{user.name}} , {{user.age}}
+        </p>
+
+
+        <!--3.7 v-if 和 v-show 显示或者隐藏-->
+        <p v-if="male==1">我的性别：男</p>
+
+        <p v-show="flag">我是一个p标签</p>
+        <button @click="hideFlag">隐藏</button>
+        <button @click="showFlag">显示</button>
+
+
+        <!--全局组件的使用-->
+        <yl-button youli="我是youli按钮"></yl-button>
+        <!--1.自定义属性：父组件数据传给子组件-->
+        <!--子组件绑定父组件 用父组件给子组件传值 v-bind-->
+        <yl-button :youli="title"></yl-button>
+        <!--2.自定义事件：子组件将数据传给父组件-->
+        <!--子组件触发父组件事件  this.$emit-->
+        <yl-button @myevent="gotoBaidu">触发父组件事件</yl-button>
+
+
+        <!--插槽的使用  <slot>-->
+        <xjq-button>新增</xjq-button>
+        <xjq-button>修改</xjq-button>
+        <xjq-button>删除</xjq-button>
+    </div>
+
+    <!--1.导入vue.js-->
+    <script src="../js/vue.min.js"></script>
+
+    <script>
+        Vue.component('xjq-button',{
+            template:"<button><slot></slot></button>"
+        });
+
+
+        // 全局组件：vue组件的全局注册
+        Vue.component('yl-button',{
+            // 如果没有传"youli"属性，就用cname作为默认值
+            template:"<button @click='clickme'>{{youli || cname}}</button>",
+            // props：自定义属性  解决父组件给子组件传值（通过 v-bind 绑定）
+            props: ["youli"],
+            data:function () {
+                return{
+                    cname:"我是一个按钮"
+                }
+            },
+            methods:{
+                clickme:function () {
+                    alert("我是组件的事件");
+                    this.$emit('myevent',{name:"youli"})
+                }
+            },
+            created:function () {
+                this.cname = "我是按钮";
+            },
+            computed:function () {},
+            watch:function () {}
+        });
+
+        // 2.创建一个vue对象  表示从app节点开始渲染节点内的节点
+        // 定义vue的model模型
+        var vm = new Vue({
+            el:"#app",
+            data:{
+                title:"我是君莫笑",
+                male:1,
+                age:20,
+                size:140,
+                content:"<strong>我是带标签的文本</strong>",
+                flag:true,
+                user:{},
+                users:[
+                    {
+                        name:"zhangsan",
+                        age:"14"
+                    },
+                    {
+                        name:"xiaoming",
+                        age:"12"
+                    },
+                    {
+                        name:"xiaohong",
+                        age:"13"
+                    }
+                ]
+            },
+            methods:{
+                myfilter:function (val,num) {
+                    return val + num;
+                },
+                login:function () {
+                    console.log("你点击了我");
+                    var userName = this.user.userName;
+                    var password = this.user.password;
+                    alert("我的名字和密码是：" + userName + password)
+                },
+                keyDownContent:function () {
+                    var content = document.getElementById("content").value;
+                    this.size = 140 - content.length;
+                },
+                enter:function () {
+                    document.getElementById("divBox").style.background = "red";
+                    document.getElementById("divBox").style.fontSize = "24px";
+                },
+                outer:function () {
+                    document.getElementById("divBox").style.background = "green";
+                    document.getElementById("divBox").style.fontSize = "14px";
+                },
+                gotoBaidu:function (obj) {
+                    alert("去百度..." + obj.name);
+                    return "i love you";
+                },
+                hideFlag:function () {
+                    this.flag = false
+                },
+                showFlag:function () {
+                    this.flag = true
+                }
+            },
+            // 生命周期钩子
+            created(){
+                console.log("组件加载完后执行此处")
+            },
+            // 组件属性
+            props:{},
+            // 计算属性（相比methods具有监听作用）
+            comments:{},
+            // 监听属性
+            watch:{},
+            // 局部组件
+            components:{
+                'ylxjq-button':{
+                    template: "<button @click='clickme'>{{title}}</button>",
+                    data:function () {
+                        return{
+                            title:"我是一个按钮"
+                        }
+                    },
+                    methods:{
+                        clickme:function () {
+                            alert("我是组件的事件")
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+
+</body>
+</html>
+```
+
+
 
 ### 1.3 Vue生命周期
 
