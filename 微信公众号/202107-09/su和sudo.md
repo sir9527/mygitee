@@ -33,6 +33,7 @@ ssh -p 22 test_xjq@82.157.112.153
 
 - sudo su -  ：切换到root用户。需要输入当前用户密码
 - sudo命令相比su命令的优点：可以避免暴露root用户的密码，同时给用户提供root权限
+- sudo 命令 ：使用超级管理员权限进行执行命令
 - 注：sudo命令需要root用户在"/etc/sudoers"中添加权限
 
 
