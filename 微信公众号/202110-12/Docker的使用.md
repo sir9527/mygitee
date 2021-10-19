@@ -10,7 +10,7 @@
 
 ## 1.Docker架构图
 
-![docker架构图](../../../../云原生课件笔记/云原生笔记/image/docker架构图.png)
+![docker架构图](./image/docker架构图.png)
 
 
 - Registry：镜像仓库
@@ -89,7 +89,7 @@ sudo systemctl restart docker
 docker info
 ```
 
-![docker镜像加速器](../../../../云原生课件笔记/云原生笔记/image/docker镜像加速器.png)
+![docker镜像加速器](./image/docker镜像加速器.png)
 
 
 
@@ -97,7 +97,7 @@ docker info
 
 ## 3.Docker的常用命令
 
-![docker命令](../../../../云原生课件笔记/云原生笔记/image/docker命令.png)
+![docker命令](./image/docker命令.png)
 
 
 
@@ -336,8 +336,8 @@ requirepass xujiaqiyouli
 
 打包成Dockerfile
 
-![dockerfile](../../../../云原生课件笔记/云原生笔记/image/dockerfile.png)
-![上传文件](../../../../云原生课件笔记/云原生笔记/image/上传文件.png)
+![dockerfile](./image/dockerfile.png)
+![上传文件](./image/上传文件.png)
 
 ```bash
 # 基础镜像
