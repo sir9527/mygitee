@@ -32,14 +32,21 @@
 - 
 
 
+
+
+
 ## 开发工具的使用
 - [IDEA全家桶破解](https://www.bilibili.com/video/BV1zb4y1U7Fv?p=2)
 
 
 
-## Linux命令
-- [su和sudo](./微信公众号/202107-09/su和sudo.md)
-
+## 运维
+- Linux
+  - [su和sudo](./微信公众号/202107-09/su和sudo.md)
+- 云原生
+  - [架构师的第一课：云原生](./微信公众号/202110-12/架构师的第一课：云原生.md)
+  - [Docker的使用](./微信公众号/202110-12/Docker的使用.md)
+  - [K8s和KubeShphere](./微信公众号/202110-12/K8s和KubeShphere.md)
 
 ## 面试小结
 - 1.JAVA基础
