@@ -51,6 +51,13 @@
 ## 常用中间件
 - [Redis的使用](./微信公众号/202107-09/redis的使用.md)
 - [zk的使用](./微信公众号/202107-09/zk的使用.md)
+- [RabbitMQ](./微信公众号/202110-12/中间件-RabbitMQ.MD)
+- [RocketMQ](./微信公众号/202110-12/中间件-RocketMQ.MD)
+- [shardingJDBC](./微信公众号/202110-12/中间件-shardingJDBC.MD)
+- [MyCat](./微信公众号/202110-12/中间件-MyCat.MD)
+- [seata的AT模式](./微信公众号/202110-12/中间件-seata的AT模式.md)
+- [接口限流之sentinel](./微信公众号/202110-12/中间件-接口限流之sentinel.MD)
+- [XXL_JOB](./微信公众号/202110-12/中间件-XXL_JOB.md)
 - [RPC（待续）](./微信公众号/202107-09/RPC/RPC.md)
 
 
