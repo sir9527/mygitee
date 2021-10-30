@@ -41,6 +41,7 @@
 - 4.业务设计方案
     - 4.1 [延时任务取消订单](./微信公众号/202110-12/延时任务取消订单.md)
     - 4.2 [高性能短链设计](./微信公众号/202110-12/高性能短链设计.md)
+    - 4.3 [关注流](./微信公众号/202110-12/关注流.md)
 - 5.网络编程
     - 5.1 [HTTP和RPC(待补充)](./微信公众号/202110-12/网络编程-HTTP和RPC(待补充).md)
     - 5.2 [Netty](./微信公众号/202110-12/网络编程-Netty.MD)
@@ -53,6 +54,17 @@
     - 5.1 [幂等和去重](./微信公众号/202107-09/幂等和去重.md)
     - 5.2 [布隆过滤器](./微信公众号/202107-09/布隆过滤器.md)
     - 5.3 [阻塞IO、非阻塞IO、IO多路复用](./微信公众号/202110-12/阻塞IO、非阻塞IO、IO多路复用.md)
+    - 5.4 [Session和Cookie](./微信公众号/202110-12/Session和Cookie.MD)
+
+
+## 工作中常用的工具
+- [fastjson和jackson的使用](./微信公众号/202107-09/fastjson和jackson的使用.md)
+- [hutool工具类](./微信公众号/202107-09/hutool工具类.md)
+- [JAVA8中Stream流的使用](./bilibili/尚硅谷/JAVA8李贺飞/JAVA8新特性/JAVA8中Stream流的使用.md)
+- [JAVA8异步编程CompletableFuture](./微信公众号/202107-09/completableFuture.md)
+- [java8日期的使用](./微信公众号/202107-09/时间.md)
+- [Tomcat远程debug](./微信公众号/202110-12/工具-Tomcat远程debug.md)
+- [GIT解决冲突](./微信公众号/202110-12/工具-GIT解决冲突.MD)
 
 
 
@@ -70,31 +82,24 @@
 
 
 
+## 运维
+- Linux
+  - [su和sudo](./微信公众号/202107-09/su和sudo.md)
+  - [shell脚本](./微信公众号/202110-12/运维-shell脚本.MD)
+- 云原生
+  - [架构师的第一课：云原生](./微信公众号/202110-12/架构师的第一课：云原生.md)
+  - [Docker的使用](./微信公众号/202110-12/Docker的使用.md)
+  - [K8s和KubeShphere](./微信公众号/202110-12/K8s和KubeShphere.md)
+
+
+
 ## JAVA优化拔高
 - [JVM从入门到精通](./bilibili/尚硅谷/JVM宋红康)
-
-
-## 工作中常用的工具
-- [fastjson和jackson的使用](./微信公众号/202107-09/fastjson和jackson的使用.md)
-- [hutool工具类](./微信公众号/202107-09/hutool工具类.md)
-- [JAVA8中Stream流的使用](./bilibili/尚硅谷/JAVA8李贺飞/JAVA8新特性/JAVA8中Stream流的使用.md)
-- [JAVA8异步编程CompletableFuture](./微信公众号/202107-09/completableFuture.md)
-- [java8日期的使用](./微信公众号/202107-09/时间.md)
 
 
 
 ## 开发工具的使用
 - [IDEA全家桶破解](https://www.bilibili.com/video/BV1zb4y1U7Fv?p=2)
-
-
-
-## 运维
-- Linux
-  - [su和sudo](./微信公众号/202107-09/su和sudo.md)
-- 云原生
-  - [架构师的第一课：云原生](./微信公众号/202110-12/架构师的第一课：云原生.md)
-  - [Docker的使用](./微信公众号/202110-12/Docker的使用.md)
-  - [K8s和KubeShphere](./微信公众号/202110-12/K8s和KubeShphere.md)
 
 
 
