@@ -56,7 +56,9 @@ execution(* set*(..))
 execution(* com.xyz.service.AccountService.*(..))
 // The execution of any method defined in the service package:
 execution(* com.xyz.service.*.*(..))
-   
+// 拦截getTestPlanList方法
+execution(* com.baidu.dream.api.TestPlanAPI.getTestPlanList(..)   
+
 2.@annotation的使用    
 @annotation(org.springframework.web.annotation.RequestMapping)
 @annotation(com.ms.aop.jannotation.demo2.Annotation1) 
