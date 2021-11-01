@@ -155,6 +155,9 @@ docker update 容器id/名字 --restart=always
 
 # 服务器重启
 reboot
+
+-- 从容器内拷贝到主机上
+docker cp 容器id 容器内路径 目的地的主机路径
 ```
 
 ### 3.3 修改容器内容
