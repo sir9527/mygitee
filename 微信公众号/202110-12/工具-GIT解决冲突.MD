@@ -61,8 +61,8 @@
 	git add test.txt 
 	## 提交到本地
 	git commit -m "version02分支提交"
-        # 提交
-        git push
+    ## 提交
+    git push
 	
 ```
 
