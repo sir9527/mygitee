@@ -110,7 +110,7 @@ ConcurrentHashMap（kən  ˈkʌ  rənt）
 
 - 线程安全  synchronized（1.6 锁升级） 和 CAS 
 
-- synchronized 只锁定当前链表或红⿊⼆叉树的⾸节点。只要 hash 不冲突，就不会产⽣并发，效率提升 
+- CAS + synchronized （CAS方式确定key的数组下标，synchronized保证链表节点的同步效果）
 
   
 
