@@ -37,7 +37,8 @@ ssh -p 22 test_xjq@82.157.112.153
 - 注：sudo命令需要root用户在"/etc/sudoers"中添加权限
 
 
-
+## 4.离开当前用户
+exit
 
 
 
