@@ -154,7 +154,7 @@ public class MyMetaObjectHandler implements MetaObjectHandler {
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
+@Accessors(chain=true)
 @TableName("user")
 public class User implements Serializable{
 
