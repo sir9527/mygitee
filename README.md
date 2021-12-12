@@ -100,6 +100,9 @@
 - [JVM从入门到精通](./bilibili/尚硅谷/JVM宋红康)
 
 
+## 项目学习
+- 尚医通项目
+  - [初始化bean配置初始参数](./项目学习/尚医通项目/初始化bean配置初始参数.md)
 
 ## 开发工具的使用
 - [IDEA全家桶破解](https://www.bilibili.com/video/BV1zb4y1U7Fv?p=2)
