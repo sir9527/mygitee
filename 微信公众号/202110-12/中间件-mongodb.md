@@ -1,4 +1,25 @@
 
+```java
+// 1.增
+db.User.save({name:'zhangsan',age:21,sex:true})
+    
+// 2.删
+db.User.remove(id)
+db.User.remove({})
+    
+// 3.修改    
+db.User.update({name:"zhangsan"}, {$set:{age:100, sex:0}}) 
+    
+// 4.查询    
+db.User.find()
+db.User.find({name:"zhangsan"})    
+db.User.find({age:21}, {'name':1, 'age':1})
+db.User.find().sort({age:1})
+db.User.find().skip(0).limit(3)
+db.User.find({age:{$in:[21,26,32]}})
+db.User.find({age:{$gt:20}}).count()
+db.User.find({$or:[{age:21}, {age:28}]})
+```
 
 
 

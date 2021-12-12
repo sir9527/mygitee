@@ -18,8 +18,8 @@ id BIGINT(20) NOT NULL COMMENT '主键ID',
 name VARCHAR(30) NULL DEFAULT NULL COMMENT '姓名',
 age INT(11) NULL DEFAULT NULL COMMENT '年龄',
 email VARCHAR(50) NULL DEFAULT NULL COMMENT '邮箱',
-create_time datatime COMMENT '创建时间',
-update_time datatime COMMENT '修改时间',
+create_time datetime COMMENT '创建时间',
+update_time datetime COMMENT '修改时间',
 userversion  INT(11) COMMENT '乐观锁版本号',
 deleted  INT(1) COMMENT '逻辑删除'
 PRIMARY KEY (id)
@@ -154,7 +154,7 @@ public class MyMetaObjectHandler implements MetaObjectHandler {
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
+@Accessors(chain=true)
 @TableName("user")
 public class User implements Serializable{
 
