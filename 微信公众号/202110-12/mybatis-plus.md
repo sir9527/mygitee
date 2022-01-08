@@ -445,6 +445,80 @@ public class WrapperTest {
 }
 ```
 
+```java
+
+-- 1.实体类SysLoginUser（略）
+
+-- 2.controller层
+@RestController
+public class SysLoginUserController {
+
+    @Autowired
+    ISysLoginUserService sysLoginUserService;
+    
+     /**
+     * 分页查询数据返回列表
+     *
+     * http://localhost:8088/api/user/listpage?pageNo=1&pageSize=2
+     * @return
+     */
+    @GetMapping("/api/user/roles/page")
+    public IPage<SysLoginUser> rolepage() {
+        return sysLoginUserService.findLoginUserPage(1,10);
+    }
+}
+
+
+
+-- 3.service层
+public interface ISysLoginUserService extends IService<SysLoginUser> {
+
+    IPage<SysLoginUser> findLoginUserPage(int pageNo,int pageSize);
+}
+
+
+-- 4.service实现层
+@Slf4j
+@Service
+public class SysLoginUserServiceImpl extends ServiceImpl<SysLoginUserMapper, SysLoginUser> implements ISysLoginUserService {
+
+    /**
+     * 实现了多表关联查询分页
+     * @param pageNo
+     * @param pageSize
+     * @return
+     */
+    public IPage<SysLoginUser> findLoginUserPage(int pageNo, int pageSize){
+        Page<SysLoginUser> page = new Page<>(pageNo,pageSize);
+        QueryWrapper<SysLoginUser> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("su.status",1);
+        queryWrapper.eq("su.isdelete",0);
+        return this.baseMapper.findLoginUserPage(page,queryWrapper);
+    }
+}
+
+
+-- 5.mapper层
+public interface SysLoginUserMapper extends BaseMapper<SysLoginUser> {
+    // 多表关联查询分页
+    IPage<SysLoginUser> findLoginUserPage(Page<SysLoginUser> page, @Param("yykk") Wrapper<SysLoginUser> queryWrapper);
+}
+
+-- 6.mapper.xml层
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ksd.orm.pug.mapper.SysLoginUserMapper">
+
+    <select id="findLoginUserPage" resultType="com.ksd.pug.pojo.SysLoginUser">
+        SELECT su.* FROM sys_role_user sru
+        LEFT JOIN sys_user su ON su.id = sru.sys_user_id
+        ${yykk.customSqlSegment} # 条件在service层的QueryWrapper中拼接
+    </select>
+
+</mapper>
+
+```
+
 
 
 ## 附录：mybatis-plus代码生成
