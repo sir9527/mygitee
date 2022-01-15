@@ -38,7 +38,7 @@ ENV BASE_DIR /data/bb
 ```
 
 ```yacas
-# 将宿主机上的问紧呢拷贝到容器中  ADD可以识别下载url链接 
+# 将宿主机上的文件拷贝到容器中  ADD可以识别下载url链接 
 copy aa.txt $BASE_DIR
 ADD bb.txtx $BASE_DIR
 ADD apache-tomcat-8.5.61.tar.gz $BASE_DIR
