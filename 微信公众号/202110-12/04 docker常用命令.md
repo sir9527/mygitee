@@ -18,6 +18,25 @@
 
 
 
+### 0.启停Docker
+```yacas
+# 启动docker：
+systemctl start docker
+
+# 停止docker：
+systemctl stop docker
+
+# 重启docker：
+systemctl restart docker
+
+# 查看docker状态：
+systemctl status docker
+
+# 开机启动：  
+systemctl enable docker
+```
+
+
 ###  1.拉取镜像
 
 ```yacas
