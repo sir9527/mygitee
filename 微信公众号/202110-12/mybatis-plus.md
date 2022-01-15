@@ -501,9 +501,10 @@ public class SysLoginUserServiceImpl extends ServiceImpl<SysLoginUserMapper, Sys
 
 
 -- 5.mapper层
+-- 别名"ew"是固定的
 public interface SysLoginUserMapper extends BaseMapper<SysLoginUser> {
     // 多表关联查询分页
-    IPage<SysLoginUser> findLoginUserPage(Page<SysLoginUser> page, @Param("yykk") Wrapper<SysLoginUser> queryWrapper);
+    IPage<SysLoginUser> findLoginUserPage(Page<SysLoginUser> page, @Param("ew") Wrapper<SysLoginUser> queryWrapper);
 }
 
 -- 6.mapper.xml层
@@ -514,7 +515,7 @@ public interface SysLoginUserMapper extends BaseMapper<SysLoginUser> {
     <select id="findLoginUserPage" resultType="com.ksd.pug.pojo.SysLoginUser">
         SELECT su.* FROM sys_role_user sru
         LEFT JOIN sys_user su ON su.id = sru.sys_user_id
-        ${yykk.customSqlSegment} # 条件在service层的QueryWrapper中拼接
+        ${ew.customSqlSegment} # 条件在service层的QueryWrapper中拼接
     </select>
 
 </mapper>
