@@ -71,6 +71,9 @@ sudo systemctl restart docker
 ```
 # 查看Docker信息
 docker info
+
+# 查看docker版本
+docker --version
 ```
 
 
