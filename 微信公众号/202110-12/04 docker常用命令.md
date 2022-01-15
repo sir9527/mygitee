@@ -77,8 +77,22 @@ docker run --help
 docker logs 容器名/id 
 # 动态打印日志
 docker logs -f 容器id   
+
+
+# 或者进入容器后查看日志
+docker exec -it 容器id  /bin/bash
+# -f 循环读取  -n<行数> 显示文件的尾部 n 行内容
+tail -100f a.log 实时查看日志文件后100行
+tail -n 50 wx.log  显示最后50行
+
 ```
-### 6.查看宿主机中容器
+
+### 6.查看容器信息
+```yacas
+docker inspect [容器名|容器ID]
+```
+
+### 7.查看宿主机中容器
 
 ```yacas
 # 查看正在运行的容器
@@ -88,7 +102,7 @@ docker ps
 docker ps -a
 ```
 
-### 7.进入容器
+### 8.进入容器
 
 ```yacas
 # 进入容器内部的系统，修改容器内容  -it以交互模式
@@ -98,7 +112,7 @@ docker exec -it 容器id  /bin/bash
 exit
 ```
 
-### 8.容器和宿主机copy文件
+### 9.容器和宿主机copy文件
 
 ```yacas
 # 从容器内拷贝到主机上
@@ -110,7 +124,7 @@ docker cp 容器id:/etc/nginx/nginx.conf  /data/conf/nginx.conf
 docker cp  /data/conf/nginx.conf  容器id:/etc/nginx/nginx.conf
 ```
 
-### 9.停止/再次启动/设置开机自启/删除容器
+### 10.停止/再次启动/设置开机自启/删除容器
 
 ```yacas
 #停止容器
@@ -127,7 +141,7 @@ docker rm -f 容器id/名字  # 强制删除正在运行中的
 docker update 容器id/名字 --restart=always
 ```
 
-### 10.修改容器并保存到本地镜像仓库
+### 11.修改容器并保存到本地镜像仓库
 
 ```yacas
 # 拉去镜像
@@ -149,7 +163,7 @@ docker commit [OPTIONS] CONTAINER [REPOSITORY[:TAG]]
 docker commit -a "youli"  -m "首页变化" 287016a06473 youlinginx:v1.0
 ```
 
-### 11.镜像传输 
+### 12.镜像传输 
 
 #### 镜像传输方式1：scp传输
 
