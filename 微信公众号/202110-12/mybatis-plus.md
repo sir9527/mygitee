@@ -136,6 +136,14 @@ public class MyBatisPlusConfig {
 
 
 ```java
+
+import com.baomidou.mybatisplus.core.handlers.MetaObjectHandler;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.ibatis.reflection.MetaObject;
+import org.springframework.stereotype.Component;
+
+import java.util.Date;
+
 @Slf4j      //日志打印
 @Component // 一定不要忘记把处理器加到IOC容器中！
 public class MyMetaObjectHandler implements MetaObjectHandler {
