@@ -19,7 +19,7 @@
 ### 2.复制并保存远程新建项目地址
 
 
-![](../../../gitdemo/image/图2.png)
+![](./image/图2.png)
 
 
 
@@ -30,7 +30,7 @@
 ### 3.新建本地springboot项目
 
 
-![](../../../gitdemo/image/图3.png)
+![](./image/图3.png)
 
 
 
@@ -40,7 +40,7 @@
 
 ### 4.本地IDE打开本地新建项目
 
-![](../../../gitdemo/image/图4.png)
+![](./image/图4.png)
 
 
 
