@@ -36,6 +36,9 @@ yum install -y docker-ce docker-ce-cli containerd.io
 
 # 以下是在安装k8s的时候使用  指定了版本
 # yum install -y docker-ce-20.10.7 docker-ce-cli-20.10.7  containerd.io-1.4.6
+
+# docker版本查看  如果你需要制定版本可以查一下
+# yum list docker-ce --showduplicates | sort -r
 ```
 
 ### 4.启动Docker
@@ -71,6 +74,9 @@ sudo systemctl restart docker
 ```
 # 查看Docker信息
 docker info
+
+# 查看docker版本
+docker --version
 ```
 
 

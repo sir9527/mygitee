@@ -78,6 +78,18 @@ mybatis-plus.global-config.db-config.logic-not-delete-value=0
 
 
 ```java
+
+import com.baomidou.mybatisplus.core.injector.ISqlInjector;
+import com.baomidou.mybatisplus.extension.injector.LogicSqlInjector;
+import com.baomidou.mybatisplus.extension.plugins.OptimisticLockerInterceptor;
+import com.baomidou.mybatisplus.extension.plugins.PaginationInterceptor;
+import com.baomidou.mybatisplus.extension.plugins.PerformanceInterceptor;
+import org.mybatis.spring.annotation.MapperScan;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
+
 // 底层实现是 Interceptor 拦截器
 @Configuration                     // 配置类
 @MapperScan("com.kuang.mapper")  // 扫描我们的 mapper 文件夹 放到启动类也行
@@ -124,6 +136,14 @@ public class MyBatisPlusConfig {
 
 
 ```java
+
+import com.baomidou.mybatisplus.core.handlers.MetaObjectHandler;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.ibatis.reflection.MetaObject;
+import org.springframework.stereotype.Component;
+
+import java.util.Date;
+
 @Slf4j      //日志打印
 @Component // 一定不要忘记把处理器加到IOC容器中！
 public class MyMetaObjectHandler implements MetaObjectHandler {
@@ -443,6 +463,83 @@ public class WrapperTest {
     }
 
 }
+```
+
+
+**mybatis-plus中联表查询**
+```java
+
+-- 1.实体类SysLoginUser（略）
+
+-- 2.controller层
+@RestController
+public class SysLoginUserController {
+
+    @Autowired
+    ISysLoginUserService sysLoginUserService;
+    
+     /**
+     * 分页查询数据返回列表
+     *
+     * http://localhost:8088/api/user/listpage?pageNo=1&pageSize=2
+     * @return
+     */
+    @GetMapping("/api/user/roles/page")
+    public IPage<SysLoginUser> rolepage() {
+        return sysLoginUserService.findLoginUserPage(1,10);
+    }
+}
+
+
+
+-- 3.service层
+public interface ISysLoginUserService extends IService<SysLoginUser> {
+
+    IPage<SysLoginUser> findLoginUserPage(int pageNo,int pageSize);
+}
+
+
+-- 4.service实现层
+@Slf4j
+@Service
+public class SysLoginUserServiceImpl extends ServiceImpl<SysLoginUserMapper, SysLoginUser> implements ISysLoginUserService {
+
+    /**
+     * 实现了多表关联查询分页
+     * @param pageNo
+     * @param pageSize
+     * @return
+     */
+    public IPage<SysLoginUser> findLoginUserPage(int pageNo, int pageSize){
+        Page<SysLoginUser> page = new Page<>(pageNo,pageSize);
+        QueryWrapper<SysLoginUser> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("su.status",1);
+        queryWrapper.eq("su.isdelete",0);
+        return this.baseMapper.findLoginUserPage(page,queryWrapper);
+    }
+}
+
+
+-- 5.mapper层
+-- 别名"ew"是固定的
+public interface SysLoginUserMapper extends BaseMapper<SysLoginUser> {
+    // 多表关联查询分页
+    IPage<SysLoginUser> findLoginUserPage(Page<SysLoginUser> page, @Param("ew") Wrapper<SysLoginUser> queryWrapper);
+}
+
+-- 6.mapper.xml层
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ksd.orm.pug.mapper.SysLoginUserMapper">
+
+    <select id="findLoginUserPage" resultType="com.ksd.pug.pojo.SysLoginUser">
+        SELECT su.* FROM sys_role_user sru
+        LEFT JOIN sys_user su ON su.id = sru.sys_user_id
+        ${ew.customSqlSegment} # 条件在service层的QueryWrapper中拼接
+    </select>
+
+</mapper>
+
 ```
 
 

@@ -38,7 +38,7 @@ ENV BASE_DIR /data/bb
 ```
 
 ```yacas
-# 将宿主机上的问紧呢拷贝到容器中  ADD可以识别下载url链接 
+# 将宿主机上的文件拷贝到容器中  ADD可以识别下载url链接 
 copy aa.txt $BASE_DIR
 ADD bb.txtx $BASE_DIR
 ADD apache-tomcat-8.5.61.tar.gz $BASE_DIR
@@ -112,5 +112,24 @@ ENTRYPOINT ["java","-jar"]
 CMD ["app.jar"]
 ```
 
+
+```yacas
+# FROM java:8 设置基础镜像
+FROM openjdk:8-jdk-alpine
+# 指定镜像创建者信息
+MAINTAINER KsdPug
+# 切换工作目录
+WORKDIR /
+# 创建执行目录
+RUN mkdir -p /servers
+# 切换指定命令
+RUN cd /servers
+# 将宿主机指定的JAR_FILE  拷贝到容器指定路径/servers/app.jar中
+COPY target/yygh-host-8021.jar  /servers/app.jar
+# 暴露指定的端口
+EXPOSE 8081
+# 执行发布命令
+CMD ["nohup","java","-jar","/servers/app.jar","--server.port=8081","&"]
+```
 
 
