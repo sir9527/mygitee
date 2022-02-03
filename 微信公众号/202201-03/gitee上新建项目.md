@@ -78,7 +78,16 @@
 ![](./image/图9.png)
 
 
-
+```text
+### 添加忽略文件 ###
+target
+*.iml
+.iml
+.idea
+.mvn
+classes
+*.jar
+```
 
 
 ### 8.初始化项目 上传修改文件
